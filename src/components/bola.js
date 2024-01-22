@@ -30,14 +30,13 @@ export class Bola {
         // this.bola.setAcceleration(this.bola.getData('acel-x'), this.bola.getData('acel-y'));
         this.bola.setVelocity(this.bola.getData('vel-x'), this.bola.getData('vel-y'));
 
-        this.bola.setCollideWorldBounds(true);
-        this.bola.setBounce(1);
+        this.bola.setCollideWorldBounds(true).setBounce(1).setDepth(-10);
+
+        const shadowFX = this.bola.postFX.addShadow(-5, 5, 0.06, 0.5, 0x111111, 2, .8);
 
         this.controles = this.relatedScene.input.keyboard.createCursorKeys();
 
-        console.log(this.bola);
-        console.log(this.bola.body.height);
-        console.log(this.bola.body.y);
+        console.log(this.bola, this.bola.body.height, this.bola.body.y);
     }
 
     update() {

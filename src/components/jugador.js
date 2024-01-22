@@ -21,9 +21,7 @@ export class Jugador {
         this.jugador.setData('acel-x', Jugador.ACEL_X);
         this.jugador.setData('vel-y', Jugador.VEL_Y);
 
-        this.jugador.setCollideWorldBounds(true);
-        this.jugador.setImmovable(true);
-        this.jugador.setBounce(0.1);
+        this.jugador.setCollideWorldBounds(true).setImmovable(true).setBounce(0.1).setDepth(10);
 
         this.controles = this.relatedScene.input.keyboard.createCursorKeys();
         

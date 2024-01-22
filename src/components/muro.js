@@ -1,9 +1,6 @@
 // ========================================================================
 export class Muro {
-
-    static WIDTH = 896;
-    static HEIGHT = 640;
-
+    
     static tileXY = [64, 32];
 
     static array_muro = [
@@ -39,7 +36,7 @@ export class Muro {
                 const valor = Muro.array_muro[i][ii];
 
                 if (valor !== 0) {
-                    this.ladrillo.create(ii * Muro.tileXY[0], i * Muro.tileXY[1], `ladrillo${valor}`).setOrigin(0, 0);
+                    this.ladrillo.create(ii * Muro.tileXY[0], i * Muro.tileXY[1], `ladrillo${valor}`).setOrigin(0, 0).setDepth(0);
                 }
             }
         }

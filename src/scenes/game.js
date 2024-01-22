@@ -8,9 +8,6 @@ import { Jugador } from './../components/jugador.js';
 import { Bola } from './../components/bola.js';
 import { Marcador } from './../components/marcador.js';
 
-const WIDTH = 896;
-const HEIGHT = 640;
-
 // --------------------------------------------------------------
 export class Game extends Phaser.Scene {
 
@@ -40,17 +37,14 @@ export class Game extends Phaser.Scene {
     const nivel = this.marcadores.nivel;
 
     // this.add.image(0, 0, 'fondo1').setOrigin(0, 0).setScale(0.7, 0.5);
-    this.add.image(0, 0, `fondo${nivel}`).setOrigin(0, 0).setScale(this.escala[nivel][0], this.escala[nivel][1]);
+    this.add.image(0, 0, `fondo${nivel}`).setOrigin(0, 0).setDepth(-20).setScale(this.escala[nivel][0], this.escala[nivel][1]);
 
-    // this.gameoverImage = this.add.image(400, 90, 'gameover');
-    // this.gameoverImage.visible = false;
-    
     // this.cameras.main.setBounds(0, 0, 800, 550 * 2);
-    this.physics.world.setBounds(0, 0, WIDTH, HEIGHT);
+    this.physics.world.setBounds(0, 0, this.sys.game.config.width, this.sys.game.config.height);
     this.physics.world.setBoundsCollision(true, true, true, false);
 
     this.muro.create();
-    this.jugador.create(WIDTH, HEIGHT);
+    this.jugador.create(this.sys.game.config.width, this.sys.game.config.height);
     this.bola.create(this.jugador.get().x, this.jugador.get().y);
     // this.marcador.create();
     
@@ -81,10 +75,4 @@ export class Game extends Phaser.Scene {
     // this.bola.update();
     // this.marcador.update(this.jugador.get().x, this.jugador.get().y);
   }
-
-  // ================================================================
-  /* comePuntito(jugador, puntito) {
-
-    puntito.disableBody(true, true);
-  } */
 }
